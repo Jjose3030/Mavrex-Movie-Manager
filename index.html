@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mavrex Movie Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo-cont">
+            <img src="logo1.png" alt="">
+            <span class="logo-name">Mavrex</span>
+        </div>
+        <div class="tool-bar">
+            <input type="search" name="search" class="search" class="movie-search" placeholder="Search movies.....">
+            <button class="add-movie-btn add-one"><span class="add-text">Add movie</span> <span class="add-b">+</span></button>
+        </div>
+        <div class="bar">
+                <p><i class="fa-solid fa-bars-staggered" id="menu-icon"></i></p>
+        </div>
+    </header>
+
+    <main>
+        <nav>
+            <ul>
+                <li><a href="#" data-page="all-movies" class="page-nav active">All Movies</a></li>
+                <li><a href="#" data-page="watchlist" class="page-nav">Watchlist</a></li>
+                <li><a href="#" data-page="watched" class="page-nav">Watched</a></li>
+            </ul>
+            <div class="user-cont">
+                <div class="spin-cont"></div>
+                <div class="user-text">Welcome back <span class="user-name"></span></div>
+            </div>
+        </nav>
+
+
+        <div class="display-page">
+            <section class="page movie-page empty active" id="all-movies">
+
+                <div class="intro-cont">
+                    <p><span class="bold">Sorry,</span> you do not have any movies yet</p>
+                    <div class="add-cont">
+                        <button class="add-movie-btn">Add movies now</button>
+                    </div>
+                </div>
+
+                <div class="movie-cont"></div>
+
+            </section>
+
+            <section class="page empty watchlist-page" id="watchlist">
+                <div class="intro-cont">
+                    <p><span class="bold">Sorry,</span> you do not have any movies yet</p>
+                    <div class="add-cont">
+                        <button class="add-movie-btn">Add movies now</button>
+                    </div>
+                </div>
+
+                <div class="watchlist-cont">
+                    
+                </div>
+            </section>
+
+
+            <section class="page empty watched-page" id="watched">
+                <div class="intro-cont">
+                    <p><span class="bold">Sorry,</span> you do not have any movies yet</p>
+                    <div class="add-cont">
+                        <button class="add-movie-btn">Add movies now</button>
+                    </div>
+                </div>
+                <div class="watch-cont">
+                    
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- form for adding movies -->
+    <div class="add-movie-cont">
+            <div class="add-m">
+                <button class="close-btn" type="button"><i class="fa-solid fa-xmark fa-lg" style="color: rgb(255, 255, 255);"></i></button>
+                <form action="" id="add-movie" class="add-movie">
+                
+                    <legend>Add your movie</legend>
+
+                    <div class="movie-group">
+                        <label for="movie-name">Movie Name<span class="req-sign">*</span></label>
+                        <input type="text" id="movie-name" name="movie-name" placeholder="Avengers">
+                        <span class="error" id="movie-name-error"></span>
+                    </div>
+                    <div class="movie-group">
+                        <label for="movie-note">Movie Note<span class="req-sign">*</span></label>
+                        <textarea name="movie-note" id="movie-note" placeholder="Note about movie"></textarea>
+                        <span class="error" id="movie-note-error"></span>
+                        
+                    </div>
+                    <div class="movie-group">
+                        <label for="movie-image">Movie Poster<span class="req-sign">*</span></label>
+                        <input type="text" id="movie-image" name="movie-image" placeholder="Enter movie image url" >
+                        <span class="error" id="movie-image-error"></span>
+                    </div>
+                    
+                    <div class="movie-add-footer">
+                        <div class="movie-group">
+                            <label for="movie-status">Movie Status<span class="req-sign">*</span></label>
+                            <select name="movie-status" id="movie-status">
+                                <option value="default" selected disabled>Choose Status</option>
+                                <option value="watched">Watched</option>
+                                <option value="watchlist">Watchlist</option>
+                            </select>
+                            <span class="error" id="movie-status-error">field can't be empty</span>
+                        </div>
+                        <div class="movie-group">
+                            <label for="movie-year">Release Year<span class="req-sign">*</span></label>
+                            <input type="text" id="movie-year" name="movie-year" placeholder="2009">
+                            <span class="error" id="movie-year-error">field can't be empty</span>
+                        </div>
+                        <div class="movie-group">
+                            <label for="movie-genre">Genre<span class="req-sign">*</span></label>
+                            <select name="movie-genre" id="movie-genre">
+                                <option value="default" selected disabled>Choose Genre</option>
+                                <option value="action">Action</option>
+                                <option value="romance">Romance</option>
+                                <option value="comedy">Comedy</option>
+                                <option value="melo-drama">Melo-drama</option>
+                                <option value="sci-fi">Sci-Fi</option>
+                                <option value="anime">Anime</option>
+                                <option value="historical">Historical</option>
+                            </select>
+                            <span class="error" id="movie-genre-error">field can't be empty</span>
+                        </div>
+                        <div class="movie-group">
+                            <label for="movie-rate">Rating<span class="req-sign">*</span></label>
+                            <input type="text" id="movie-rate" name="movie-rate" placeholder="1-10">
+                            <span class="error" id="movie-rate-error">field can't be empty</span>
+                        </div>
+                    </div>
+
+                    <div class="form-add-btn-cont">
+                        <button class="form-add-btn" type="submit">Add</button>
+                    </div>
+            </form>
+            </div>
+    </div>
+    
+
+    <!-- for the edit form modal pop up to edit the selected movie -->
+    <div class="edit-form-cont">
+        <button class="close-edit-btn" type="button"><i class="fa-solid fa-xmark fa-lg" style="color: rgb(255, 255, 255);"></i></button>
+        <div class="edit-m">
+            
+        </div>
+    </div>
+
+
+      <!-- for notification display  -->
+    <div class="noti-cont">
+        <div class="noti-item">
+            <div class="noti-box">
+                <p class="noti-text">Movie added successfully</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- overlay modal -->
+    <div class="modal"></div>
+
+    <!-- displays the selected movie card details in a modal popup format -->
+    <div class="movie-more-cont">
+        <button class="close-rev-btn" type="button"><i class="fa-solid fa-xmark fa-lg" style="color: rgb(255, 255, 255);"></i></button>
+        <div class="more-c">
+
+        </div>
+    </div>
+
+
+ 
+
+    <div class="delete-cont">
+        <div class="del-item">
+            <p>Are you sure you want to delete this movie?</p>
+            <div class="con-cont">
+                <button class="no-btn">No</button>
+                <button class="yes-btn">Yes, delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
