@@ -70,6 +70,7 @@ function closeAdd(parent, cname){
 }
 
 
+//
 const addForm = document.getElementById('add-movie');
 
 addForm.addEventListener('submit', (e)=>{
@@ -77,6 +78,7 @@ addForm.addEventListener('submit', (e)=>{
     validateForm(addForm);
 })
 
+//form validation for adding movie data
 function validateForm(formCheck){
     const movieName = document.getElementById('movie-name');
     const movieNote = document.getElementById('movie-note');
@@ -138,7 +140,7 @@ function validateForm(formCheck){
     if(movieRate.value === '' || isNaN(movieRate.value)){
         errorMessage(movieRate, 'Enter movie rating between 1-10');
         return;
-    } else if(Number(movieRate.value.trim().length) > 2) {
+    } else if(Number(movieRate.value.length) > 3 || Number(movieRate.value) > 10) {
         errorMessage(movieRate, 'Choose between 1 - 10');
         return;
     } else {
@@ -170,7 +172,7 @@ function validateForm(formCheck){
     createCard() 
 }
 
-
+//controls displaying and removing error messages also used it at different part to remove the active state of some elements
 function errorMessage(input, message) {
     const error = document.getElementById(input.id + "-error")
     
@@ -240,6 +242,7 @@ function updatePage(){
 }
 
 
+//creates the display card on the home pages
 function createCard(){
     const watchlistMovies = movieArray.filter(movie => movie.mStatus === 'watchlist');
     const watchMovies = movieArray.filter(movie => movie.mStatus === 'watched');
@@ -302,6 +305,8 @@ function generateCard(item, unit){
 
 createCard()
 
+
+//show review of the selected movie card 
 function showRevPage(cardId) {
     const reviewMovie = movieArray.find(movie => Number(movie.id) === Number(cardId));
     localStorage.setItem('movieDetails', JSON.stringify(reviewMovie))
@@ -540,10 +545,11 @@ const menuIcon = document.getElementById('menu-icon');
 
 menuIcon.addEventListener('click', ()=>{
     const nav = document.querySelector('nav');
+    const closeNavBtn = document.querySelector('.nav-close-btn')
+
     nav.classList.toggle('active', !nav.classList.contains('active'))
     showAdd(modal, 'active')
 
-    
     modal.addEventListener('click', ()=>{
         if(nav.classList.contains('active')) {
             closeAdd(nav, 'active')
@@ -551,9 +557,12 @@ menuIcon.addEventListener('click', ()=>{
         }
     })
     
-   
-
-   
+    closeNavBtn.addEventListener('click', ()=>{
+        closeAdd(nav, 'active')
+        closeAdd(modal, 'active')
+    })
 })
+
+
 
 

@@ -82,10 +82,18 @@ header {
     scale: 0.95;
 }
 
-#menu-icon {
+#menu-icon, .nav-close-btn {
     font-size: 23px;
     cursor: pointer;
     color: var(--red);
+}
+.nav-close-btn {
+    width: max-content;
+    align-self: end;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: none;
 }
 .bar {
     display: none;
@@ -118,7 +126,13 @@ nav ul {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-height: 90%;
+    overflow: scroll;
 
+}
+nav ul::-webkit-scrollbar {
+    display: none;
+    width: 0;
 }
 nav ul li {
     display: inline-block;
@@ -228,6 +242,7 @@ nav ul li {
 }
 .intro-cont p {
     font-size: 20px;
+    text-align: center;
 }
 span.bold {
     font-size: 40px;
@@ -683,7 +698,7 @@ span.add-b {
         position: fixed;
         top: 0;
         z-index: 350;
-        left: -280px;
+        left: -285px;
         width: 250px;
         height: 100vh;
         overflow-y: auto;
@@ -692,6 +707,9 @@ span.add-b {
     }
     nav.active {
         left: 0;
+    }
+    .nav-close-btn {
+        display: block;
     }
     .bar {
         display: block;
@@ -785,6 +803,15 @@ span.add-b {
 }
 }
 
+@media(max-width: 378px) {
+    .intro-cont p {
+    font-size: 18px;
+}
+span.bold {
+    font-size: 35px;
+}
+}
+
 @media(max-width: 365px) {
     .add-one {
         width: 30px;
@@ -794,6 +821,19 @@ span.add-b {
 
 @media(max-width: 325px) {
     .add-movie-cont {
-        height: 425px;
+        /* height: 450px; */
+        max-height: 96%;
     }
+    .intro-cont p {
+    font-size: 16px;
+}
+span.bold {
+    font-size: 30px;
+}
+.user-text {
+    font-size: 13.8px;
+}.spin-cont {
+    width: 25px;
+    height: 25px;
+}
 }
