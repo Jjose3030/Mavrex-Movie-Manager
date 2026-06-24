@@ -130,7 +130,7 @@ nav ul {
     overflow: scroll;
 
 }
-nav ul::-webkit-scrollbar {
+nav ul::-webkit-scrollbar,  .edit-form::-webkit-scrollbar {
     display: none;
     width: 0;
 }
